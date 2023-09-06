@@ -27,5 +27,5 @@ const adminData = new Schema({
   },
 });
 
-const adminlogin = new mongoose.model("adminLogin", adminData);
+const adminlogin = new mongoose.model("admin_login", adminData);
 module.exports = adminlogin;
