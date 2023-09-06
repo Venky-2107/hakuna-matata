@@ -1,5 +1,5 @@
 const express = require("express");
-const adminLoginRouter = require("./routes/adminLoginRoutes");
+const adminLoginRouter = require("./routes/admin/adminLoginRoutes");
 const app = express();
 
 app.use(express.json());
