@@ -1,3 +1,18 @@
-import adminLogin from "../models/adminRegisterModel";
+const Login = require('../models/adminRegisterModel');
 
-console.log(adminLogin); // just for import purpose need to be removed later
+const loginController = {}
+
+loginController.registerUser = async function(req,res){
+    try{
+        let newUser = new Login({
+            ...req.body
+        })
+        newUser.save();
+        res.status(200).send({status : "Successfully uploaded", data : newUser});
+    }
+    catch(err){
+        res.status(400).send({status : "Failed"});
+    }
+}
+
+module.exports = loginController;
