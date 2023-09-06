@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const adminData = new Schema({
-  id: {
+  _id: {
     type: String,
   },
   name: {
@@ -18,7 +18,7 @@ const adminData = new Schema({
     required: true,
   },
   contact: {
-    type: Number,
+    type: String,
     required: true,
   },
   secret: {
@@ -28,4 +28,4 @@ const adminData = new Schema({
 });
 
 const adminlogin = new mongoose.model("adminLogin", adminData);
-module.exports(adminlogin);
+module.exports = adminlogin;
