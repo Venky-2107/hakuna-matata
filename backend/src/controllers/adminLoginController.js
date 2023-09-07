@@ -15,7 +15,47 @@ loginController.registerUser = async function (req, res) {
 
 loginController.getAdminUser = async (req, res) => {
   try {
-    let users = await admin_login.find({});
+    let users = await admin_login.find();
+    res.status(200).send({ status: "Successfully Fetched", data: users });
+  } catch (err) {
+    res.status(400).send({ status: "failed" });
+  }
+};
+
+loginController.getUserById = async (req, res) => {
+  try {
+    let users = await admin_login.findById(req.params.id);
+    res.status(200).send({ status: "Successfully Fetched", data: users });
+  } catch (err) {
+    res.status(400).send({ status: "failed" });
+  }
+};
+
+loginController.updateUserById = async (req, res) => {
+  try {
+    let users = await admin_login.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body },
+      { new: true }
+    );
+    res.status(200).send({ status: "Successfully Fetched", data: users });
+  } catch (err) {
+    res.status(400).send({ status: "failed" });
+  }
+};
+
+loginController.deleteUserById = async (req, res) => {
+  try {
+    let users = await admin_login.findByIdAndDelete(req.params.id);
+    res.status(200).send({ status: "Successfully Fetched", data: users });
+  } catch (err) {
+    res.status(400).send({ status: "failed" });
+  }
+};
+
+loginController.deleteUsers = async (req, res) => {
+  try {
+    let users = await admin_login.deleteMany();
     res.status(200).send({ status: "Successfully Fetched", data: users });
   } catch (err) {
     res.status(400).send({ status: "failed" });
