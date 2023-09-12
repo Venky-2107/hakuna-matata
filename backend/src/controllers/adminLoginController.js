@@ -8,7 +8,6 @@ loginController.registerUser = async function (req, res) {
   try {
     let { password, secret } = req.body;
     let hashedPassword = await bcrypt.hash(password, 12);
-    console.log("salt", await bcrypt.genSalt(10));
     let hashedSecret = await bcrypt.hash(secret, 12);
     let newUser = new adminRegister({
       _id: uuid.v4(),
@@ -48,7 +47,6 @@ loginController.getUserLogin = async (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (user) {
       if (passwordMatch) {
-        console.log(password, user.password);
         res.status(200).send({ status: "Successfully Fetched", data: user });
       } else {
         res
