@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const app = require("./app");
 
 mongoose.connect(process.env.DB_URL + process.env.DB_NAME)
 .then(()=>{
@@ -8,8 +9,7 @@ mongoose.connect(process.env.DB_URL + process.env.DB_NAME)
 .catch(()=>{
   console.log('Unable to connect to DB');
 })
-const app = require("./app");
 
-app.listen(4000, () => {
-  console.log("listening at 4000");
+app.listen(process.env.PORT, () => {
+  console.log("Server is in listening state");
 });

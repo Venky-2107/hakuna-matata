@@ -1,11 +1,11 @@
 const express = require("express");
-const adminLoginRouter = require("./routes/admin/adminLoginRoutes");
 const app = express();
+const loginRouter = require('./routes/login.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", adminLoginRouter);
+app.use("/", loginRouter);
 
 
 module.exports = app;
