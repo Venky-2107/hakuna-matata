@@ -75,9 +75,11 @@ addPropertyController.getProperty = async (req, res) => {
 
 const getToken = (headers) => {
   if (headers && headers.authorization) {
-    var token = headers.authorization;
+    const fullToken = headers.authorization;
+    const token = fullToken.split(" ");
+    return token[1];
   }
-  return token;
+  return null;
 };
 
 module.exports = addPropertyController;

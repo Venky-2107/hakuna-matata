@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const adminLoginController = require("../controllers/admin/adminLogin.controller");
 const userLoginController = require("../controllers/user/userLogin.controller");
-const addPropertyController = require("../controllers/admin/addProperty.controller");
+const addPropertyController = require("../controllers/admin/adminProperty.controller");
 
 //Routes for admin
 router.post("/admin/signup", adminLoginController.registerAdmin);
